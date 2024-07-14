@@ -25,9 +25,9 @@ def has_sales_permission(user: User, action: str, resource: str, obj=None) -> bo
     if resource == 'client' and action == 'create':
         return True
     if resource == 'client' and action == 'update':
-        return obj and obj.sales_contact_id == user.id
+        return True
     if resource == 'contract' and action in ['create', 'update']:
-        return obj and obj.client.sales_contact_id == user.id
+        return True
     if resource == 'event' and action == 'create':
         return True
     return False
@@ -35,9 +35,9 @@ def has_sales_permission(user: User, action: str, resource: str, obj=None) -> bo
 
 def has_support_permission(user: User, action: str, resource: str, obj=None) -> bool:
     if resource == 'event' and action == 'update':
-        return obj and obj.support_contact_id == user.id
+        return True
     if resource == 'event' and action == 'read':
-        return obj and obj.support_contact_id == user.id
+        return True
     return False
 
 

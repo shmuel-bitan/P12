@@ -23,11 +23,13 @@ def display_menu(user):
         print("16. Delete Event")
     print("17. Logout")
 
+
 def prompt_login():
     print("\n===== Login =====")
     username = input("Enter your username (FirstName LastName): ")
     password = input("Enter your password: ")
     return username, password
+
 
 def prompt_user_info():
     username = input("Enter username: ")
@@ -37,10 +39,13 @@ def prompt_user_info():
     team = input("Enter team (MANAGEMENT, SALES, SUPPORT): ")
     return username, password, phone, mobile, team
 
+
 def display_users(users):
     print("\n=== Users ===")
     for user in users:
-        print(f"ID: {user.id}, Username: {user.username}, Team: {user.team}, Phone: {user.phone}, Mobile: {user.mobile}")
+        print(
+            f"ID: {user.id}, Username: {user.username}, Team: {user.team}, Phone: {user.phone}, Mobile: {user.mobile}")
+
 
 def prompt_client_info():
     full_name = input("Enter full name: ")
@@ -50,11 +55,13 @@ def prompt_client_info():
     sales_contact_id = input("Enter sales contact ID: ")
     return full_name, email, phone, company_name, sales_contact_id
 
+
 def display_clients(clients):
     print("\n=== Clients ===")
     for client in clients:
         print(f"ID: {client.id}, Name: {client.full_name}, Email: {client.email}, Phone: {client.phone}, "
               f"Company: {client.company_name}, Sales Contact: {client.sales_contact_id}")
+
 
 def prompt_contract_info():
     client_id = input("Enter client ID: ")
@@ -64,11 +71,13 @@ def prompt_contract_info():
     status = input("Enter status (True/False): ").lower() == 'true'
     return client_id, sales_contact_id, total_amount, amount_due, status
 
+
 def display_contracts(contracts):
     print("\n=== Contracts ===")
     for contract in contracts:
         print(f"ID: {contract.id}, Client ID: {contract.client_id}, Sales Contact ID: {contract.sales_contact_id}, "
               f"Total Amount: {contract.total_amount}, Amount Due: {contract.amount_due}, Status: {contract.status}")
+
 
 def prompt_event_info():
     contract_id = input("Enter contract ID: ")
@@ -83,13 +92,16 @@ def prompt_event_info():
     notes = input("Enter notes (optional): ")
     return contract_id, event_name, client_id, client_contact, event_date_start, event_date_end, support_contact_id, location, attendees, notes
 
+
 def display_events(events):
     print("\n=== Events ===")
     for event in events:
-        print(f"ID: {event.id}, Contract ID: {event.contract_id}, Event Name: {event.event_name}, Client ID: {event.client_id}, "
-              f"Client Contact: {event.client_contact}, Event Date Start: {event.event_date_start}, "
-              f"Event Date End: {event.event_date_end}, Support Contact ID: {event.support_contact_id}, "
-              f"Location: {event.location}, Attendees: {event.attendees}, Notes: {event.notes}")
+        print(
+            f"ID: {event.id}, Contract ID: {event.contract_id}, Event Name: {event.event_name}, Client ID: {event.client_id}, "
+            f"Client Contact: {event.client_contact}, Event Date Start: {event.event_date_start}, "
+            f"Event Date End: {event.event_date_end}, Support Contact ID: {event.support_contact_id}, "
+            f"Location: {event.location}, Attendees: {event.attendees}, Notes: {event.notes}")
+
 
 def display_unassigned_events(events):
     print("\n=== Unassigned Events ===")
@@ -97,14 +109,19 @@ def display_unassigned_events(events):
         print(f"ID: {event.id}, Event Name: {event.event_name}, Client ID: {event.client_id}, "
               f"Event Date Start: {event.event_date_start}, Event Date End: {event.event_date_end}")
 
+
 def display_events_by_support_contact(events, support_contact_id):
     print(f"\n=== Events for Support Contact ID: {support_contact_id} ===")
     for event in events:
         print(f"ID: {event.id}, Event Name: {event.event_name}, Client ID: {event.client_id}, "
               f"Event Date Start: {event.event_date_start}, Event Date End: {event.event_date_end}")
 
+
 def display_contracts_by_signed_status(contracts, signed):
-    status = "Signed" if signed else "Unsigned"
+    if signed:
+        status = "Signed"
+    else:
+        status = "Unsigned"
     print(f"\n=== {status} Contracts ===")
     for contract in contracts:
         print(f"ID: {contract.id}, Client ID: {contract.client_id}, Total Amount: {contract.total_amount}, "

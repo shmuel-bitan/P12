@@ -6,6 +6,7 @@ from controllers import authenticate_user, view_clients, view_contracts, view_ev
 from controllers import create_client_menu, update_client_menu, delete_client_menu
 from controllers import create_contract_menu, update_contract_menu, delete_contract_menu
 from controllers import create_event_menu, update_event_menu, delete_event_menu
+from controllers import view_contracts_by_status
 from views import display_menu, prompt_login
 from permissions import has_permission
 
@@ -52,7 +53,7 @@ def main():
                     elif choice == '9':
                         pass
                     elif choice == '10':
-                        pass
+                        view_contracts_by_status(db)
                     elif choice == '11' and has_permission(user, 'update', 'client'):
                         update_client_menu(db)
                     elif choice == '12' and has_permission(user, 'delete', 'client'):

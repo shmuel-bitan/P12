@@ -4,8 +4,8 @@ from sqlalchemy.orm import Session
 import sentry_sdk
 from models import Client, Contract, Event, User
 from queries import get_all_clients, create_client, update_client, delete_client
-from queries import get_all_contracts, create_contract, update_contract, delete_contract
-from queries import get_all_events, create_event, update_event, delete_event
+from queries import get_all_contracts, create_contract, update_contract, delete_contract, get_contracts_by_signed_status
+from queries import get_all_events, create_event, update_event, delete_event, get_unassigned_events
 from queries import get_unassigned_events, get_events_by_support_contact, get_contracts_by_signed_status
 from queries import get_user_by_username, create_user, get_all_users, update_user, delete_user
 from views import display_menu, display_clients, display_contracts, display_events, display_unassigned_events
@@ -18,6 +18,17 @@ def validate_input(user_input):
     if not re.match("^[A-Za-z0-9@_.-]*$", user_input):
         raise ValueError("Invalid input!")
     return user_input
+
+
+def view_contracts_by_status(db: Session):
+    status_input = validate_input(input("enter the status of the contracts (1 for signed 2 for unsigned"))
+    if status_input == '1':
+        signed = True
+    if status_input == '2':
+        signed = False
+    contract = get_contracts_by_signed_status(db, signed)
+    display_contracts_by_signed_status(contract, signed)
+    input("rentrez une valeur pour retourner au menu ")
 
 
 def authenticate_user(db: Session, username: str, password: str):

@@ -37,6 +37,13 @@ def view_contracts_by_status(db: Session):
     input("rentrez une valeur pour retourner au menu ")
 
 
+def view_event_support_id(db: Session):
+    support_id = int(input('enter the support id '))
+    event = get_events_by_support_contact(db, support_id)
+    display_events_by_support_contact(event, support_id)
+    input("rentrez une valeur pour retourner au menu ")
+
+
 def authenticate_user(db: Session, username: str, password: str):
     username = validate_input(username)
     password = validate_input(password)

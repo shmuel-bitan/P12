@@ -9,7 +9,6 @@ def display_menu(user):
     if user.team == 'SALES':
         print("5. Create Client")
         print("6. Create Contract")
-    if user.team in ['MANAGEMENT', 'SALES']:
         print("7. Create Event")
     print("8. View Unassigned Events")
     print("9. View Events by Support Contact")

@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from passlib.context import CryptContext
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+
 Base = declarative_base()
 metadata = Base.metadata
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -74,12 +75,7 @@ class Event(Base):
     client_contact = Column(String(100), nullable=False)
     event_date_start = Column(DateTime, nullable=False)
     event_date_end = Column(DateTime, nullable=False)
-    support_contact_id = Column(Integer, ForeignKey('users.id'))
+    support_contact_id = Column(Integer, ForeignKey('users.id'), nullable=True)
     location = Column(String(200), nullable=False)
     attendees = Column(Integer, nullable=False)
     notes = Column(String(500), nullable=True)
-
-
-
-
-

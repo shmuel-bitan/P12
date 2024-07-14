@@ -20,6 +20,12 @@ def validate_input(user_input):
     return user_input
 
 
+def view_unassigned_event(db: Session):
+    event = get_unassigned_events(db)
+    display_unassigned_events(event)
+    input("rentrez une valeur pour retourner au menu ")
+
+
 def view_contracts_by_status(db: Session):
     status_input = validate_input(input("enter the status of the contracts (1 for signed 2 for unsigned"))
     if status_input == '1':
@@ -140,7 +146,7 @@ def create_client_menu(db: Session):
     email = validate_input(email)
     phone = validate_input(phone)
     company_name = validate_input(company_name)
-    sales_contact_id = validate_input(sales_contact_id)
+    sales_contact_id = sales_contact_id
     new_client = Client(
         full_name=full_name,
         email=email,
@@ -240,10 +246,10 @@ def create_event_menu(db: Session):
     client_contact = validate_input(client_contact)
     event_date_start = validate_input(event_date_start)
     event_date_end = validate_input(event_date_end)
-    support_contact_id = validate_input(support_contact_id)
+    support_contact_id = support_contact_id
     location = validate_input(location)
     attendees = validate_input(str(attendees))
-    notes = validate_input(notes)
+    notes = notes
     new_event = Event(
         contract_id=int(contract_id),
         event_name=event_name,

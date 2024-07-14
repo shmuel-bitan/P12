@@ -29,7 +29,7 @@ def has_sales_permission(user: User, action: str, resource: str, obj=None) -> bo
     if resource == 'contract' and action in ['create', 'update']:
         return obj and obj.client.sales_contact_id == user.id
     if resource == 'event' and action == 'create':
-        return obj and obj.client.sales_contact_id == user.id
+        return True
     return False
 
 

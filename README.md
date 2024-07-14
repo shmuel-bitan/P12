@@ -123,6 +123,15 @@ Pour initialiser la base de données PostgreSQL à partir du fichier `EpicEvent.
 
 Votre base de données PostgreSQL est maintenant initialisée et prête à être utilisée avec l'application Epic Events CRM CLI.
 
+## Utilisateurs de Test
+Pour tester l'application avec des utilisateurs existants, vous pouvez utiliser les identifiants suivants :
+
+
+Nom d'utilisateur : sam
+Mot de passe : pwd123
+Nom d'utilisateur : shmuel
+Mot de passe : password123
+Ces utilisateurs sont préconfigurés dans la base de données pour faciliter les tests.
 ## Journalisation Sentry
 
 Pour consulter les journaux des exceptions et des erreurs, accédez à votre tableau de bord Sentry [ici](https://oc-u0.sentry.io/issues/?project=4507339447795792).

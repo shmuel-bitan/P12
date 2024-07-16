@@ -43,7 +43,7 @@ def main():
                     elif choice == '4' and has_permission(user, 'create', 'collaborator'):
                         manage_collaborators(db)
                     elif choice == '5' and has_permission(user, 'create', 'client'):
-                        create_client_menu(db)
+                        create_client_menu(db,user.id)
                     elif choice == '6' and has_permission(user, 'create', 'contract'):
                         create_contract_menu(db)
                     elif choice == '7' and has_permission(user, 'create', 'event'):

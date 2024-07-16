@@ -147,13 +147,13 @@ def delete_user_menu(db: Session):
     input("Press any key to return to the main menu...")
 
 
-def create_client_menu(db: Session):
-    full_name, email, phone, company_name, sales_contact_id = prompt_client_info()
+def create_client_menu(db: Session, sales_id):
+    full_name, email, phone, company_name = prompt_client_info()
     full_name = validate_input(full_name)
     email = validate_input(email)
     phone = validate_input(phone)
     company_name = validate_input(company_name)
-    sales_contact_id = sales_contact_id
+    sales_contact_id = sales_id
     new_client = Client(
         full_name=full_name,
         email=email,

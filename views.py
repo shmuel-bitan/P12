@@ -10,9 +10,14 @@ def display_menu(user):
         print("5. Create Client")
         print("6. Create Contract")
         print("7. Create Event")
+    if user.team == 'MANAGEMENT':
+        print("6. Create Contract")
     print("8. View Unassigned Events")
     print("9. View Events by Support Contact")
     print("10. View Contracts by Signed Status")
+    if user.team == 'SALES':
+        print("11. Update Client")
+        print("13. Update Contract")
     if user.team == 'MANAGEMENT':
         print("11. Update Client")
         print("12. Delete Client")
@@ -51,8 +56,7 @@ def prompt_client_info():
     email = input("Enter email: ")
     phone = input("Enter phone: ")
     company_name = input("Enter company name: ")
-    sales_contact_id = input("Enter sales contact ID: ")
-    return full_name, email, phone, company_name, sales_contact_id
+    return full_name, email, phone, company_name
 
 
 def display_clients(clients):

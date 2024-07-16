@@ -24,17 +24,17 @@ def has_management_permission(action: str, resource: str, obj=None) -> bool:
 def has_sales_permission(user: User, action: str, resource: str, obj=None) -> bool:
     if resource == 'client' and action == 'create':
         return True
-    if resource == 'client' and action == 'update':
+    if resource == 'client' and action == 'update' and obj and obj.sales_contact_id == user.id:
         return True
-    if resource == 'contract' and action in ['create', 'update']:
+    if resource == 'contract' and action == 'update' and obj and obj.sales_contact_id == user.id:
         return True
-    if resource == 'event' and action == 'create':
+    if resource == 'event' and action == 'create' and obj and obj.contract_id and obj.contract.sales_contact_id == user.id:
         return True
     return False
 
 
 def has_support_permission(user: User, action: str, resource: str, obj=None) -> bool:
-    if resource == 'event' and action == 'update':
+    if resource == 'event' and action == 'update' and obj and obj.support_contact_id == user.id:
         return True
     if resource == 'event' and action == 'read':
         return True
